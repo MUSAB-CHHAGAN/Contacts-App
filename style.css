@@ -13,12 +13,12 @@ header {
   justify-content: space-around;
   align-items: center;
   padding: 1.5rem;
-  background-color: maroon;
+  background: linear-gradient(25deg, black, black, darkgray);
   color: white;
 }
 header #add-button {
   display: block;
-  box-shadow: 0.3rem 0.3rem 0.5rem black;
+  box-shadow: 0.5rem 0.5rem 0.5rem black;
   padding: 0.5rem;
   width: 4rem;
   border: 2px solid black;
@@ -31,6 +31,7 @@ header #add-button:hover {
 }
 header h1 {
   font-size: 3rem;
+  font-weight: 900;
 }
 section {
   position: relative;
@@ -64,7 +65,7 @@ section {
 
   transform: translateX(-50%);
   margin-top: -3em;
-  background: rgb(14, 110, 110);
+  background: rgb(19, 78, 78);
   padding: 1rem;
   display: none;
   z-index: 10;
@@ -96,10 +97,11 @@ section {
   display: inline-block;
   width: 100%;
   border: none;
-  padding: 0.5rem;
+  padding: 0.4rem;
+  font-size: 1.2rem;
   outline: none;
   font-weight: 900;
-  border-radius: 1em;
+  border-radius: 0.7em;
   background-color: rgb(247, 233, 208);
 }
 
@@ -137,20 +139,14 @@ section {
   background-color: lightblue;
   transition: 0.2s;
 }
-#buttons button:hover,
-#edit-buttons button:hover {
-  background-color: rgb(243, 163, 13);
-}
 
 ul {
   position: relative;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* background: rgb(247, 232, 206); */
 }
 li {
-  /* background: rgba(189, 104, 55, 0.5); */
   background: linear-gradient(20deg, black, black, darkgray);
   max-width: 90vw;
   width: 80%;
@@ -180,11 +176,18 @@ li #dom-buttons h1 {
   #addForm,
   #editForm {
     position: fixed;
-    max-width: 80vw;
+    max-width: 90vw;
     width: 100%;
-
-    left: 10%;
-    margin-top: -3rem;
+    left: 5%;
+    margin-top: 1rem;
+  }
+  #addForm label,
+  #editForm label {
+    display: inline-block;
+    margin: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 1.4rem;
   }
   ul {
     grid-template-columns: repeat(1, 1fr);
@@ -193,13 +196,14 @@ li #dom-buttons h1 {
   header h1 {
     font-size: 1.8rem;
   }
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+  header #add-button:hover {
+    box-shadow: 0.1em 0.1em black;
+  }
   header button {
     transform: scale(0.7);
-  }
-
-  #buttons button:hover,
-  #edit-buttons button:hover {
-    background-color: rgb(33, 30, 210);
-    color: white;
   }
 }

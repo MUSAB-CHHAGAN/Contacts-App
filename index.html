@@ -41,11 +41,11 @@
       <!--Add Form-->
 
       <div id="addForm">
-        <form name="">
+        <form name="myForm" onsubmit="return validateForm()">
           <label for="">First Name :</label><br />
-          <input type="text" name="" id="first-name" required /><br />
+          <input type="text" name="fname" id="first-name" required /><br />
           <label for="">Last Name :</label><br />
-          <input type="text" name="" id="last-name" /><br />
+          <input type="text" name="lname" id="last-name" required /><br />
           <label for="">Contact :</label><br />
           <input
             type="tel"
@@ -53,27 +53,35 @@
             maxlength="10"
             id="input-contact"
             required
+            name="contact"
             pattern="[1-9]{1}[0-9]{9}"
           /><br />
           <label for="">Address :</label><br />
-          <input type="text" name="" id="input-address" required /><br />
+          <input type="text" name="address" id="input-address" required /><br />
           <label for="">Email :</label><br />
-          <input type="email" name="" id="input-email" required /><br />
+          <input type="email" name="email" id="input-email" required /><br />
           <label for="">Status :</label>
           <div id="status">
-            <input type="radio" name="status" id="add-radio-1" value="Active" />
+            <input
+              type="radio"
+              name="status"
+              id="add-radio-1"
+              name="input"
+              value="Active"
+            />
             <input
               type="radio"
               name="status"
               id="add-radio-2"
               value="In-Active"
+              name="input"
             />
             <label for="add-radio-1">Active</label>
             <label for="add-radio-2">In-Active</label>
           </div>
           <div id="buttons">
-            <button id="cancel-btn">Cancel</button>
-            <button id="add-btn">Add</button>
+            <button id="cancel-btn" type="button">Cancel</button>
+            <button id="add-btn" type="button">Add</button>
           </div>
         </form>
       </div>

@@ -10,10 +10,9 @@ const contactList = document.querySelector("ul");
 const cancelUpdateButton = document.getElementById("edit-cancel-btn");
 const editUserInputs = document.querySelectorAll("#editForm input");
 const updateButton = document.getElementById("update");
-
 const editModal = document.getElementById("editForm");
-
 let contacts = [];
+
 const clearList = () => {
   const item = document.querySelectorAll("ul li");
   for (let i = 0; (li = item[i]); i++) {
@@ -51,8 +50,6 @@ const updateHandler = (idx, id) => {
       swal("Updated....", "Contact Updated Successfully!", "success");
     }
   }
-
-  console.log("this is break");
 
   editModal.classList.remove("visible");
   backdrop.classList.remove("visible");
@@ -138,10 +135,11 @@ const addContactHandler = () => {
   const editId = Math.random();
   const deleteId = Math.random();
 
-  let radioInput = "";
+  let radioInput = "Active";
 
   const addRadio1 = document.getElementById("add-radio-1");
-  addRadio1.checked ? (radioInput = "Active") : (radioInput = "In-Active");
+  !addRadio1.checked ? (radioInput = "In-Active") : radioInput;
+
   if (
     first.trim() === "" ||
     last.trim() === "" ||
@@ -166,6 +164,11 @@ const addContactHandler = () => {
   if (contacts.push(contact)) {
     swal("Great....", "Contact Added Successfully!", "success");
   }
+  clearList();
+  modalToggle();
+  backdropToggle();
+  renderContacts();
+  clearInputs();
 };
 
 const modalToggle = () => {
@@ -195,13 +198,8 @@ cancelAddButton.addEventListener("click", () => {
   clearList();
   renderContacts();
 });
-addContactButton.addEventListener("click", (event) => {
-  modalToggle();
-  backdropToggle();
-  clearList();
+addContactButton.addEventListener("click", () => {
   addContactHandler();
-  renderContacts();
-  clearInputs();
 });
 cancelUpdateButton.addEventListener("click", () => {
   editModalToggle();
