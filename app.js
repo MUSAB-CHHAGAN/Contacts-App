@@ -12,7 +12,7 @@ const editUserInputs = document.querySelectorAll("#editForm input");
 const updateButton = document.getElementById("update");
 const editModal = document.getElementById("editForm");
 let contacts = [];
-
+const deleteConfirmation = () => {};
 const clearList = () => {
   const item = document.querySelectorAll("ul li");
   for (let i = 0; (li = item[i]); i++) {
@@ -47,7 +47,7 @@ const updateHandler = (idx, id) => {
   const elIdx = contacts.findIndex((contact) => contact.edit === id);
   if (elIdx === idx) {
     if (contacts.splice(idx, 1, updatedContact)) {
-      swal("Updated....", "Contact Updated Successfully!", "success");
+      swal("Updated . . . .", "Contact Updated Successfully!", "success");
     }
   }
 
@@ -64,17 +64,31 @@ const clearEditInputs = () => {
   }
 };
 const deleteHandler = (id) => {
-  let index = 0;
-  for (const contact of contacts) {
-    if (contact.delete === id) {
-      break;
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this contact!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      let index = 0;
+      for (const contact of contacts) {
+        if (contact.delete === id) {
+          break;
+        }
+        index++;
+      }
+      contacts.splice(index, 1);
+
+      contactList.children[index].remove();
+      swal("Your contact  has been deleted . . !", {
+        icon: "success",
+      });
+    } else {
+      swal("Your contact is safe !");
     }
-    index++;
-  }
-  if (contacts.splice(index, 1)) {
-    swal("Deleted..", "Contact Deleted Successfully!", "success");
-  }
-  contactList.children[index].remove();
+  });
 };
 
 const EditHandler = (id) => {
@@ -149,7 +163,7 @@ const addContactHandler = () => {
     address.trim() === "" ||
     email.trim() === ""
   ) {
-    swal("Oops", "Please Fill All Field's!", "warning");
+    swal("Oops . . . .", "Please Fill All Field's!", "warning");
     return;
   }
 
@@ -164,7 +178,7 @@ const addContactHandler = () => {
     delete: deleteId,
   };
   if (contacts.push(contact)) {
-    swal("Great....", "Contact Added Successfully!", "success");
+    swal("Great . . . ", "Contact Added Successfully!", "success");
   }
   clearList();
   modalToggle();
