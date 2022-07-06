@@ -13,7 +13,7 @@ header {
   justify-content: space-around;
   align-items: center;
   padding: 1.5rem;
-  background: linear-gradient(25deg, black, black, darkgray);
+  background: linear-gradient(25deg, black, darkgray);
   color: white;
 }
 header #add-button {
@@ -145,15 +145,23 @@ ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem;
+  max-width: 95vw;
+  width: 100%;
+  margin: 0.5rem auto;
 }
 li {
   background: linear-gradient(20deg, black, black, darkgray);
-  max-width: 90vw;
-  width: 80%;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.5rem;
+  width: 100%;
   margin: 1rem auto;
   padding: 1em;
   border-radius: 1em;
   color: white;
+}
+li i {
+  margin-right: 1rem;
 }
 
 li #dom-buttons {
@@ -172,14 +180,14 @@ li #dom-buttons h1 {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   #addForm,
   #editForm {
     position: fixed;
     max-width: 90vw;
     width: 100%;
     left: 5%;
-    margin-top: 1rem;
+    top: 6rem;
   }
   #addForm label,
   #editForm label {
@@ -193,6 +201,7 @@ li #dom-buttons h1 {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
+
   header h1 {
     font-size: 1.8rem;
   }

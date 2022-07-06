@@ -53,6 +53,7 @@ const updateHandler = (idx, id) => {
 
   editModal.classList.remove("visible");
   backdrop.classList.remove("visible");
+  backdrop.classList.remove("visible");
   clearList();
   renderContacts();
 };
@@ -78,6 +79,7 @@ const deleteHandler = (id) => {
 
 const EditHandler = (id) => {
   editModalToggle();
+  backdrop.classList.add("visible");
   const previousContact = contacts.find(({ edit }) => edit === id);
   const index = contacts.indexOf(previousContact);
 
@@ -97,11 +99,11 @@ const renderContacts = () => {
   function render(contact) {
     const contactEl = document.createElement("li");
     contactEl.innerHTML = `
-    <h2><i class="fa fa-user" aria-hidden="true"></i>  ${contact.first} ${contact.last}</h>
-    <h3><i class="fa fa-phone" aria-hidden="true"></i>  ${contact.contactNumber}</h3>
-    <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  ${contact.address}</h4>
-    <h4><i class="fa fa-envelope" aria-hidden="true"></i>  ${contact.email}</h4>
-    <h4><i class="fa fa-bell" aria-hidden="true"></i>  ${contact.status}</h4>
+    <h2><i class="fa fa-user" aria-hidden="true"></i>${contact.first} ${contact.last}</h>
+    <h3><i class="fa fa-phone" aria-hidden="true"></i>${contact.contactNumber}</h3>
+    <h4><i class="fa fa-globe" aria-hidden="true"></i>${contact.address}</h4>
+    <h4><i class="fa fa-envelope" aria-hidden="true"></i>${contact.email}</h4>
+    <h4><i class="fa fa-bell" aria-hidden="true"></i>${contact.status}</h4>
     <div id="dom-buttons">
     <h1 id="${contact.edit}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h1>
     <h1 id="${contact.delete}"><i class="fa fa-trash" aria-hidden="true"></i></h1>
@@ -204,11 +206,14 @@ addContactButton.addEventListener("click", () => {
 cancelUpdateButton.addEventListener("click", () => {
   editModalToggle();
   backdrop.classList.remove("visible");
+  clearEditInputs();
 });
 
 backdrop.addEventListener("click", (event) => {
   event.stopImmediatePropagation();
   backdrop.classList.remove("visible");
   addModalToggle.classList.remove("visible");
+  editModal.classList.remove("visible");
   clearInputs();
+  clearEditInputs();
 });
