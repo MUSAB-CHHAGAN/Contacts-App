@@ -11,6 +11,7 @@ const cancelUpdateButton = document.getElementById("edit-cancel-btn");
 const editUserInputs = document.querySelectorAll("#editForm input");
 const updateButton = document.getElementById("update");
 const editModal = document.getElementById("editForm");
+
 let contacts = [];
 
 const clearList = () => {
@@ -84,9 +85,10 @@ const deleteHandler = (id) => {
       contactList.children[index].remove();
       swal("Your contact  has been deleted . . !", {
         icon: "success",
+        button: true,
       });
     } else {
-      swal("Your contact is safe !");
+      return;
     }
   });
 };
@@ -163,7 +165,12 @@ const addContactHandler = () => {
     address.trim() === "" ||
     email.trim() === ""
   ) {
-    swal("Oops . . . .", "Please Fill All Field's!", "warning");
+    swal({
+      title: "Oops . . . .",
+      text: "Please Fill All Field's!",
+      icon: "warning",
+      button: true,
+    });
     return;
   }
 
