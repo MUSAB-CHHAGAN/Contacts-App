@@ -99,7 +99,7 @@ section {
   width: 100%;
   border: none;
   padding: 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   outline: none;
   font-weight: 900;
   border-radius: 0.7em;
@@ -182,21 +182,24 @@ li #dom-buttons h1 {
 }
 
 @media only screen and (max-width: 500px) {
+  #addForm input,
+  #editForm input {
+    font-size: 1rem;
+  }
   #addForm,
   #editForm {
     position: fixed;
     max-width: 90vw;
     width: 100%;
     left: 5%;
-    top: 6rem;
   }
   #addForm label,
   #editForm label {
     display: inline-block;
-    margin: 0.5rem;
+    margin: 0.3rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   ul {
     grid-template-columns: repeat(1, 1fr);

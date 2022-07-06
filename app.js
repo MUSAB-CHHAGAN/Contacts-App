@@ -12,7 +12,7 @@ const editUserInputs = document.querySelectorAll("#editForm input");
 const updateButton = document.getElementById("update");
 const editModal = document.getElementById("editForm");
 let contacts = [];
-const deleteConfirmation = () => {};
+
 const clearList = () => {
   const item = document.querySelectorAll("ul li");
   for (let i = 0; (li = item[i]); i++) {
